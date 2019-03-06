@@ -9,6 +9,8 @@ import (
 	"strings"
 )
 
+// ReverseProxy forwards a request to the appropriate service and sends the
+// response back to the caller.
 func ReverseProxy(routes map[string]string) Handler {
 	return func(w http.ResponseWriter, r *http.Request) error {
 		segments := strings.Split(r.URL.Path, "/")

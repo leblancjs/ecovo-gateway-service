@@ -21,11 +21,11 @@ func (err Error) String() string {
 func WrapError(err error) *Error {
 	if err == nil {
 		return nil
-	} else {
-		return &Error{
-			http.StatusInternalServerError,
-			"Something went wrong while processing your request. Please contact your system administrator.",
-			err,
-		}
+	}
+
+	return &Error{
+		http.StatusInternalServerError,
+		"Something went wrong while processing your request. Please contact your system administrator.",
+		err,
 	}
 }
