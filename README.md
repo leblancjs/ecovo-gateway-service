@@ -12,7 +12,6 @@
 The gateway service acts as a facade for the Ecovo APIs. It routes requests to the appropriate service and returns the responses. Also, if required, it aggregates data from different services to fulfill the request.
 
 ## To-Do
-* Complete the README
 * Make routes configurable using JSON or something, instead of using environment variables
 
 ## Configuration
@@ -132,7 +131,11 @@ heroku logs --tail
 ```
 
 ## Endpoints
-TODO: Fill this out
+Most of the time, the gateway acts as a reverse proxy that forwards the request
+to the appropriate service and sends the response back to the caller. However,
+in the cases where it does something special, it will be documented below.
+
+As of now, it does nothing special.
 
 ## Errors
 ### Structure
