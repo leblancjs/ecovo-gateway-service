@@ -7,7 +7,6 @@ import (
 
 	"azure.com/ecovo/gateway-service/cmd/handler"
 	"github.com/gorilla/handlers"
-	"github.com/gorilla/mux"
 )
 
 func main() {
@@ -16,10 +15,22 @@ func main() {
 		port = "8080"
 	}
 
-	r := mux.NewRouter()
+	userServiceHost := os.Getenv("USER_SERVICE_HOST")
+	if userServiceHost == "" {
+		log.Fatal("missing user service host")
+	}
 
-	r.Handle("/", handler.HelloWorld()).
-		Methods("GET")
+	tripServiceHost := os.Getenv("TRIP_SERVICE_HOST")
+	if tripServiceHost == "" {
+		log.Fatal("missing trip service host")
+	}
 
-	log.Fatal(http.ListenAndServe(":"+port, handlers.LoggingHandler(os.Stdout, r)))
+	routes := make(map[string]string)
+	routes["users"] = userServiceHost
+	routes["trips"] = tripServiceHost
+
+	mux := http.NewServeMux()
+	mux.Handle("/", handler.RequestID(handler.ReverseProxy(routes)))
+
+	log.Fatal(http.ListenAndServe(":"+port, handlers.LoggingHandler(os.Stdout, mux)))
 }

@@ -11,8 +11,8 @@
             "mode": "auto",
             "program": "${fileDirname}",
             "env": {
-                "USER_SERVICE_HOST": "https://ecovo-user-service.herokuapp.com/",
-                "TRIP_SERVICE_HOST": "https://ecovo-trip-service.herokuapp.com/"
+                "USER_SERVICE_HOST": "https://ecovo-user-service.herokuapp.com",
+                "TRIP_SERVICE_HOST": "https://ecovo-trip-service.herokuapp.com"
             },
             "args": []
         }

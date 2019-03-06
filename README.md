@@ -12,7 +12,8 @@
 The gateway service acts as a facade for the Ecovo APIs. It routes requests to the appropriate service and returns the responses. Also, if required, it aggregates data from different services to fulfill the request.
 
 ## To-Do
-* Write the service
+* Complete the README
+* Make routes configurable using JSON or something, instead of using environment variables
 
 ## Configuration
 The routes to the user service and the trip service are configured using environment variables. To avoid having to define them every time the service is run, they are kept in the `.env` file at the root of the repository.
