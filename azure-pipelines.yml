@@ -10,8 +10,21 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-  imageName: 'trip-service:$(build.buildId)'
+  imageName: 'gateway-service'
+  heroku.app.name: 'ecovo-api'
 
 steps:
-- script: docker build -f Dockerfile -t $(imageName) .
-  displayName: 'docker build'
+- task: InstallSSHKey@0
+  inputs:
+    hostName: $(id.heroku.host)
+    sshPublicKey: $(id.heroku.pub)
+    sshKeySecureFile: id.heroku
+
+- script: docker build -f Dockerfile -t $(imageName):$(build.buildId) -t $(imageName):latest .
+  displayName: 'Build Docker image'
+
+- script: git remote add heroku ssh://git@heroku.com/$(heroku.app.name).git
+  displayName: Add Heroku Remote Git Repository
+
+- script: git push heroku HEAD:master
+  displayName: Deploy to Heroku
