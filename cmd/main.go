@@ -30,10 +30,16 @@ func main() {
 		log.Fatal("missing trip search service host")
 	}
 
+	reservationServiceHost := os.Getenv("RESERVATION_SERVICE_HOST")
+	if reservationServiceHost == "" {
+		log.Fatal("missing reservation search service host")
+	}
+
 	routes := make(map[string]string)
 	routes["users"] = userServiceHost
 	routes["trips"] = tripServiceHost
 	routes["search"] = tripSearchServiceHost
+	routes["reservations"] = reservationServiceHost
 
 	mux := http.NewServeMux()
 	mux.Handle("/", handler.RequestID(handler.ReverseProxy(routes)))

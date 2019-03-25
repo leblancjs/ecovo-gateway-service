@@ -13,7 +13,8 @@
             "env": {
                 "USER_SERVICE_HOST": "https://ecovo-user-service.herokuapp.com",
                 "TRIP_SERVICE_HOST": "https://ecovo-trip-service.herokuapp.com",
-                "TRIP_SEARCH_SERVICE_HOST": "https://ecovo-trip-search-service.herokuapp.com"
+                "TRIP_SEARCH_SERVICE_HOST": "https://ecovo-trip-search-service.herokuapp.com",
+                "RESERVATION_SERVICE_HOST": "https://ecovo-reservation-service.herokuapp.com"
             },
             "args": []
         }

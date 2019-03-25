@@ -23,6 +23,8 @@ The table below enumerates the different environment variables.
 |---|---|---|
 |USER_SERVICE_HOST|Yes|URI to the user service|
 |TRIP_SERVICE_HOST|Yes|URI to the trip service|
+|TRIP_SEARCH_SERVICE_HOST|Yes|URI to the trip-search service|
+|RESERVATION_SERVICE_HOST|Yes|URI to the reservation service|
 
 ## Build and Test
 ### Prerequisites
